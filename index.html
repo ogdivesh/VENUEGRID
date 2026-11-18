@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VenueGrid – Event Venue Booking & Management</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><div class="wrap bar">
+  <div class="logo">▦ VenueGrid</div>
+  <nav><button class="on" data-view="find">Organizer: Find venues</button><button data-view="owner">Owner: Dashboard</button></nav>
+  <button class="ghost" id="theme" aria-label="Toggle light or dark theme">◐</button>
+</div></header>
+
+<main class="wrap">
+<!-- ===== ORGANIZER VIEW ===== -->
+<section id="find">
+  <h1>Discover venues</h1>
+  <p class="mute">Filter by capacity, facilities, date and budget. Venues already booked on your dates are flagged automatically.</p>
+  <div class="panel" id="filters">
+    <div class="filters">
+      <label>Search name / area<input id="fQ" placeholder="e.g. Heritage"></label>
+      <label>Min capacity<input id="fCap" type="number" min="0" placeholder="Guests"></label>
+      <label>Max budget / day (₹)<input id="fBud" type="number" min="0" placeholder="Any"></label>
+      <label>Start date<input id="fFrom" type="date"></label>
+      <label>End date (optional)<input id="fTo" type="date"></label>
+    </div>
+    <div class="chips" id="facs"></div>
+    <div class="chips"><label><input type="checkbox" id="fHide"> Hide venues with conflicts</label><button class="ghost sm" id="reset">Reset filters</button></div>
+  </div>
+  <p class="mute" id="count"></p>
+  <div class="grid" id="grid"></div>
+</section>
+
+<!-- ===== OWNER VIEW ===== -->
+<section id="owner" hidden>
+  <h1>Owner dashboard</h1>
+  <div class="panel"><label>Managing venue<select id="oV"></select></label></div>
+  <div class="stats" id="stats"></div>
+  <div class="two" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+    <div class="panel calbox" id="oCal" style="margin:0"></div>
+    <div class="panel" style="margin:0"><h3 style="margin-top:0">Booking requests</h3><div class="tw"><table><thead><tr><th>#</th><th>Event</th><th>Dates</th><th>Guests</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead><tbody id="rows"></tbody></table></div></div>
+  </div>
+</section>
+</main>
+
+<div class="modal" id="modal" hidden><div class="mbox"><button class="x" id="close" aria-label="Close">×</button><div id="mbody"></div></div></div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="script.js"></script>
+</body>
+</html>
